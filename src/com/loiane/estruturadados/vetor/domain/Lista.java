@@ -82,6 +82,10 @@ public class Lista<T> {
         return -1;
     }
 
+    public boolean contem(T elemento){
+        return busca(elemento) > -1;
+    }
+
     public void removeElement(int posicao) {
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("posição invalida");

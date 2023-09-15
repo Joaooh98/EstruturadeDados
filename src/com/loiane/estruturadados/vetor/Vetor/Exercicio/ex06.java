@@ -22,7 +22,7 @@ public class ex06 {
         int opcao = 1;
 
         while (opcao != 0) {
-            obterOpcaoMenu(teclado);
+            opcao = obterOpcaoMenu(teclado);
             switch (opcao) {
                 case 1:
                     adicionarContato(teclado, lista);
@@ -43,25 +43,26 @@ public class ex06 {
                     contatoExiste(teclado, lista);
                     break;
                 case 7:
-                    adicionarContato(teclado, lista);
+                    removeContatoPosicao(teclado, lista);
                     break;
                 case 8:
-                    adicionarContato(teclado, lista);
+                    removeContato(teclado, lista);
                     break;
                 case 9:
-                    adicionarContato(teclado, lista);
+                    imprimeTamanhoVetor(lista);
                     break;
                 case 10:
-                    adicionarContato(teclado, lista);
+                    limparVetor(lista);
                     break;
                 case 11:
-                    adicionarContato(teclado, lista);
+                    imprimir(lista);
                     break;
 
                 default:
                     break;
             }
         }
+        System.out.println("progama encerrado");
 
     }
 
@@ -127,6 +128,7 @@ public class ex06 {
             System.out.println("segue contato");
             System.out.println(lista);
 
+            System.out.println("fazendo pesquisa do ultimo contato encontrado:" + pos);
             pos = lista.busca(contato);
             System.out.println("segue contato encontrado na posicao:" + pos);
 
@@ -155,19 +157,73 @@ public class ex06 {
     }
 
     private static void contatoExiste(Scanner teclado, Lista<Contato> lista) {
-        int pos = leInformacaoInt("informe o elemento no vetor que deseja buscar o contato", teclado);
+
+        int pos = leInformacaoInt("verificando se o contato existe no vetor ", teclado);
 
         try {
             Contato contato = lista.busca(pos);
 
-            System.out.println("segue contato");
-            System.out.println(contato);
+            boolean existe = lista.contem(contato);
 
-            /// ainda nao esta pronto 
+            if (existe) {
+                System.out.println("segue contato");
+                System.out.println(contato);
+            } else {
+                System.out.println("contato nao esta na lista");
+            }
 
         } catch (Exception e) {
             System.out.println("posicao invalida");
         }
+    }
+
+    private static void removeContatoPosicao(Scanner teclado, Lista<Contato> lista) {
+        int pos = leInformacaoInt("informe a posicao que deve ser removida: ", teclado);
+
+        try {
+
+            lista.busca(pos);
+
+            System.out.println(lista);
+
+            lista.removeElement(pos);
+
+            System.out.println("contato removido da lista conforme posicao indicada ");
+            System.out.println(lista);
+
+        } catch (Exception e) {
+            System.out.println("posicao invalida");
+        }
+    }
+
+    private static void removeContato(Scanner teclado, Lista<Contato> lista) {
+        int pos = leInformacaoInt("informe a posicao que deve ser removida: ", teclado);
+
+        try {
+
+            Contato contato = lista.busca(pos);
+
+            lista.removeElement(contato);
+
+            System.out.println("contato removido");
+
+        } catch (Exception e) {
+            System.out.println("posicao invalida");
+        }
+    }
+
+    private static void imprimeTamanhoVetor(Lista<Contato> lista) {
+        System.out.println(lista.tamanho());
+    }
+
+    private static void limparVetor(Lista<Contato> lista) {
+        lista.limpar();
+
+        System.out.println("todos os contatos foi excluido");
+    }
+
+    private static void imprimir(Lista<Contato> lista) {
+        System.out.println(lista);
     }
 
     private static String leInformacao(String msg, Scanner teclado) {
@@ -196,7 +252,6 @@ public class ex06 {
 
         }
         return num;
-
     }
 
     private static int obterOpcaoMenu(Scanner teclado) {
@@ -235,12 +290,14 @@ public class ex06 {
                 System.out.println("entrada invalida corrigi os campos\n");
             }
         }
-        return 0;
+        return opcao;
     }
 
     private static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista) {
         Contato contato;
+
         for (int i = 1; i <= quantidade; i++) {
+
             contato = new Contato();
             contato.setName("Contato " + i);
             contato.setEmail("new" + i + "@gmail.com");
