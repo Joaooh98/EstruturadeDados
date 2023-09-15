@@ -52,7 +52,7 @@ public class OrderControllerTwo {
     public static Order confirm(Order order, OrderService orderService,
             PaymentService paymentService, ProductsService productsService) {
 
-        synchronized (order.getId()) {
+        synchronized (order) {
 
             orderService.confirmPaymentOrder(order);
             productsService.confirmPaymentProducts(order.getProducts());

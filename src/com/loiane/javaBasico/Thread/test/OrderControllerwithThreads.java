@@ -72,7 +72,7 @@ public class OrderControllerwithThreads {
 
     public static void loupis() {
         var Order = new Order(1);
-        synchronized (Order.getId()) {
+        synchronized (Order) {
             var orderRepository = new OrderRepository();
 
             List<Order> list = orderRepository.listOrdes();

@@ -226,13 +226,13 @@ public class ex06 {
         System.out.println(lista);
     }
 
-    private static String leInformacao(String msg, Scanner teclado) {
+    protected static String leInformacao(String msg, Scanner teclado) {
         System.out.println(msg);
         String entrada = teclado.nextLine();
         return entrada;
     }
 
-    private static int leInformacaoInt(String msg, Scanner teclado) {
+    protected static int leInformacaoInt(String msg, Scanner teclado) {
         boolean entradaValida = false;
         int num = 0;
 
@@ -254,7 +254,7 @@ public class ex06 {
         return num;
     }
 
-    private static int obterOpcaoMenu(Scanner teclado) {
+    protected static int obterOpcaoMenu(Scanner teclado) {
 
         boolean entradaValida = false;
         int opcao = 0;
@@ -293,7 +293,7 @@ public class ex06 {
         return opcao;
     }
 
-    private static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista) {
+    protected static void criarContatosDinamicamente(int quantidade, Lista<Contato> lista) {
         Contato contato;
 
         for (int i = 1; i <= quantidade; i++) {
