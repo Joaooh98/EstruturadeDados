@@ -10,4 +10,8 @@ public class Pilha<T> extends EstruturaStatica<T>{
     public Pilha(int capacidade){
         super(capacidade);
     }
+
+    public void empilha(T elemento){
+        super.Add(elemento);
+    }
 }

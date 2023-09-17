@@ -2,9 +2,10 @@ package com.loiane.estruturadados.base;
 
 @SuppressWarnings("all")
 public class EstruturaStatica<T> {
-    private T[] elementos;
-    private int tamanho;
+    protected T[] elementos;
+    protected int tamanho;
 
+    @SuppressWarnings("unchecked")
     public EstruturaStatica(int capacidade) {
         this.elementos = (T[]) new Object[capacidade];
         this.tamanho = 0;
@@ -13,6 +14,10 @@ public class EstruturaStatica<T> {
 
     public EstruturaStatica() {
         this(10);
+    }
+
+    public boolean estaVazio(){
+        return this.tamanho == 0;
     }
 
     protected boolean Add(T elemento) {
@@ -46,7 +51,7 @@ public class EstruturaStatica<T> {
         return true;
     }
 
-    private void capacityIncrease() {
+    protected void capacityIncrease() {
         if (this.tamanho == this.elementos.length) {
             T[] elementosNovos = (T[]) new Object[this.elementos.length * 2];
             for (int i = 0; i < this.elementos.length; i++) {
