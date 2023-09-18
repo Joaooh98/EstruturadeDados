@@ -14,4 +14,18 @@ public class Pilha<T> extends EstruturaStatica<T>{
     public void empilha(T elemento){
         super.Add(elemento);
     }
+    public T topo(){
+        if (this.estaVazio()) {
+            return null;
+        }
+
+        return this.elementos[tamanho-1];
+    }
+
+    public T desempilha(){
+        if (this.estaVazio()) {
+            return null;
+        }
+        return this.elementos[--tamanho];
+    }
 }
