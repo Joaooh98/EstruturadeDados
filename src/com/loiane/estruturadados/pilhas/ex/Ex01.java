@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.loiane.estruturadados.pilhas.Pilha;
 
-public class ex01 {
+public class Ex01 {
     public static void main(String[] args) {
         Pilha<Integer> pilha = new Pilha<>();
 

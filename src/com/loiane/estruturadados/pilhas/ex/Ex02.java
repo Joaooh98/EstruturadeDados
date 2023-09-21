@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.loiane.estruturadados.pilhas.Pilha;
 
-public class ex02 {
+public class Ex02 {
     // Escreva um progama que leia 10 numeros. Para cada numero lido, verifique e
     // codifique de acordo com as regras a seguir:
 

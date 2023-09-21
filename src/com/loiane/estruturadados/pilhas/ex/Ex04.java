@@ -1,11 +1,12 @@
 package com.loiane.estruturadados.pilhas.ex;
 
-import com.loiane.estruturadados.pilhas.Pilha;
+import java.util.Stack;
+
 import com.loiane.estruturadados.pilhas.domain.Livros;
 
-public class ex03 {
+public class Ex04 {
     public static void main(String[] args) {
-        Pilha<Livros> pilhaLivros = new Pilha<>(5);
+        Stack<Livros> pilhaLivros = new Stack<>();
         int anoLancamento = 1998;
         String isbn = "WAR";
         String autor = "Rebert Martin";
@@ -20,16 +21,15 @@ public class ex03 {
             ia = " Versao :";
             livros.setAutor(autor);
             livros.setNome(nome.concat(ia)+i);
-            pilhaLivros.empilha(livros);
+            pilhaLivros.push(livros);
         }
 
         System.out.println(pilhaLivros);
 
-        for (int i = 0; i < pilhaLivros.tamanho(); pilhaLivros.estaVazio()) {
-            System.out.println("removendo elementos da pilha elemento: "+pilhaLivros.tamanho());
-            pilhaLivros.desempilha();
+        for (int i = 0; i < pilhaLivros.size(); pilhaLivros.isEmpty()) {
+            System.out.println("removendo elementos da pilha elemento: "+pilhaLivros.size());
+            pilhaLivros.pop();
         }
         System.out.println("programa finalizado: "+pilhaLivros);
     }
-
 }
