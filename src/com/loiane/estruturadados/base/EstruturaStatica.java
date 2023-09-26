@@ -16,7 +16,7 @@ public class EstruturaStatica<T> {
         this(10);
     }
 
-    public boolean estaVazio(){
+    public boolean estaVazio() {
         return this.tamanho == 0;
     }
 
@@ -25,8 +25,6 @@ public class EstruturaStatica<T> {
         if (this.tamanho < this.elementos.length) {
             this.elementos[this.tamanho] = elemento;
             this.tamanho++;
-
-            System.out.println(elemento);
 
             return true;
         }
@@ -51,6 +49,19 @@ public class EstruturaStatica<T> {
         return true;
     }
 
+     protected boolean adicionar(int posicao, T elemento) {
+        
+        capacityIncrease();
+
+        for (int i = this.tamanho - 1; i >= posicao; i--) {
+            this.elementos[i + 1] = this.elementos[i];
+        }
+        this.elementos[posicao] = elemento;
+        this.tamanho++;
+
+        return true;
+    }
+
     protected void capacityIncrease() {
         if (this.tamanho == this.elementos.length) {
             T[] elementosNovos = (T[]) new Object[this.elementos.length * 2];
@@ -64,6 +75,16 @@ public class EstruturaStatica<T> {
     public int tamanho() {
         return this.tamanho;
 
+    }
+
+    protected void removeElement(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("posição invalida");
+        }
+        for (int i = posicao; i < this.tamanho - 1; i++) {
+            this.elementos[i] = this.elementos[i + 1];
+        }
+        this.tamanho--;
     }
 
     @Override
