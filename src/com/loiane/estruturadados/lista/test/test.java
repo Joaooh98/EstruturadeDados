@@ -16,5 +16,8 @@ public class test {
         
         list.adiciona(3);
         System.out.println(list);
+
+        list.limpar();
+        System.out.println(list);
     }
 }
